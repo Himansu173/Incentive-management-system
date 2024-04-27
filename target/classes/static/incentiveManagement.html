@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incentive Management System</title>
+    <link rel="icon" type="image/x-icon" href="../../asset/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation bar -->
+    <!-- <nav>
+        <img src="../../asset/logo.png" alt="Logo" height="24px">
+        <ul>
+            <li><a href="#" class="active" onclick="loadContent(holidayPackageManagement,event)">Holiday packages</a></li>
+            <li><a href="#" onclick="loadContent(incentiveManagment,event)">Employee Incentive</a></li>
+            <li><a href="#" onclick="loadContent(allocatedPackageDetails,event)">Allocated Package Details</a></li>
+        </ul>
+    </nav> -->
+    <div class="container">
+        <div class="employee-info">
+            <h2 style="color: #e1d084;">Incentive Management System</h2>
+            <button style="width: 27%; margin-left: 0px; margin-bottom: 17px; background-color: rgb(0, 188, 0);"
+                onclick="fetchAllEmployeeData()">Get Sales Details</button>
+            <label for="employeeName">Employee Name:</label>
+            <input type="text" id="employeeName" autocomplete="off">
+            <label for="employeeId">Employee ID:</label>
+            <input type="text" id="employeeId" autocomplete="off">
+            <label for="salesAmount">Sales Amount:</label>
+            <input type="number" id="salesAmount" min="0" autocomplete="off">
+            <button onclick="sendEmployeeDataToBackend()">Calculate Incentive</button>
+        </div>
+
+        <!-- Incentive details table -->
+        <div id="incentiveTable" style="display: none;">
+            <h2 id="tableTag"></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>TOTAL SALES</th>
+                        <th>INCENTIVE</th>
+                        <th>BOUNUS</th>
+                        <th>HOLIDAY PACKAGE</th>
+                    </tr>
+                </thead>
+                <tbody id="incentiveBody">
+                    <!-- Incentive details will be dynamically populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
