@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incentive Management System</title>
+    <link rel="icon" type="image/x-icon" href="../../asset/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <img src="../../asset/logo.png" alt="Logo" height="24px">
+        <ul>
+            <li><a href="#" onclick="loadContent('holidayPackageManagement',this)">Holiday packages</a></li>
+            <li><a href="#" onclick="loadContent('incentiveManagement',this)">Employee Incentive</a></li>
+            <li><a href="#" onclick="loadContent('allottedPackageDetails',this)">Allotted Packages</a></li>
+        </ul>
+    </nav>
+    <div id="content">
+    </div>
+
+    <script>
+        // Function to load content based on selected link
+        function loadContent(page, link) {
+            // Remove active class from all links
+            document.querySelectorAll('nav ul li a').forEach(function (link) {
+                link.classList.remove('active');
+            });
+
+            // Add active class to the clicked link
+            link.classList.add('active');
+
+            // Fetch the HTML content based on the page name
+            fetch(page + '.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('content').innerHTML = html;
+
+                })
+                .catch(error => console.error('Error loading HTML:', error));
+            // Fetch the JavaScript code associated with the page
+            fetch(page + '.js')
+                .then(response => response.text())
+                .then(js => {
+                    const script = document.createElement('script');
+                    script.textContent = js;
+                    document.body.appendChild(script);
+                })
+                .catch(error => console.error('Error loading JavaScript:', error));
+        }
+
+
+        // Load default content
+        loadContent('holidayPackageManagement', document.querySelector('nav ul li a'));
+    </script>
+</body>
+
+</html>
